@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacSim.Data", "PacSim.Data\PacSim.Data.csproj", "{2AE48C61-9EA4-4207-AE95-13A521D70AE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacSim.Tests", "PacSim.Tests\PacSim.Tests.csproj", "{A61A5B36-A536-4809-8E93-7D1869BD2AA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacSim.ConsoleApp", "PacSim.Console\PacSim.ConsoleApp.csproj", "{CEE040F7-135F-460E-9193-4616E55144D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AE48C61-9EA4-4207-AE95-13A521D70AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AE48C61-9EA4-4207-AE95-13A521D70AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AE48C61-9EA4-4207-AE95-13A521D70AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE48C61-9EA4-4207-AE95-13A521D70AE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A61A5B36-A536-4809-8E93-7D1869BD2AA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A61A5B36-A536-4809-8E93-7D1869BD2AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A61A5B36-A536-4809-8E93-7D1869BD2AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A61A5B36-A536-4809-8E93-7D1869BD2AA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEE040F7-135F-460E-9193-4616E55144D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE040F7-135F-460E-9193-4616E55144D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE040F7-135F-460E-9193-4616E55144D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE040F7-135F-460E-9193-4616E55144D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
