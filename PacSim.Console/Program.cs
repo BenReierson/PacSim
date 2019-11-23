@@ -12,8 +12,8 @@ namespace PacSim.ConsoleApp
     /// PLACE X,Y,F - will put the Pacman on the grid in positon X,Y and facing NORTH,SOUTH, EAST or WEST.
     /// MOVE - will move Pacman one unit forward in the direction it is currently facing.
     /// LEFT - will rotate Pacman 90 degrees in the specified direction without changing the position of Pacman.
-    /// RIGHT
-    /// REPORT
+    /// RIGHT - will rotate Pacman 90 degrees in the specified direction without changing the position of Pacman.
+    /// REPORT - will output Pacman's current position in the grid via the console.
     /// 
     /// All invalid or unrecognised commands will be ignored.
     /// 
@@ -40,7 +40,7 @@ namespace PacSim.ConsoleApp
                     if (result != null) Console.WriteLine(result);
                 }
                 catch (Exception ex)
-                {//All exceptions or otherwise inavlid input is ignored
+                {//All exceptions or otherwise invalid input is ignored
                     Debug.WriteLine(ex.Message);
                 }
             }

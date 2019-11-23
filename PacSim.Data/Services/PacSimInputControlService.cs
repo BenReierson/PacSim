@@ -33,31 +33,51 @@ namespace PacSim.Services
         /// <returns>any output returned after command execution, null if none</returns>
         public string? TryParseAndExecuteCommand(string input)
         {
-            if (string.IsNullOrEmpty(input)) throw new ArgumentException("Input is empty");
-            else if (input.StartsWith("PLACE", StringComparison.InvariantCulture))
+            switch (input)
             {
-                // This looks to be a PLACE command. Attempt to split it to find x,y,f arguments
-                var placeSplit = input.Split(' ', ',');
+                case var i when string.IsNullOrEmpty(i):
+                    throw new ArgumentException("Input is empty");
 
-                if (placeSplit.Length == 4)
-                {//Corrent number of arguments found, attempt to parse them
+                case var i when i.StartsWith("PLACE", StringComparison.InvariantCulture):
+                {
+                    // This looks to be a PLACE command. Attempt to split it to find x,y,f arguments
+                    var placeSplit = input.Split(' ', ',');
 
-                    var valid = int.TryParse(placeSplit[1], out var x);
-                    valid &= int.TryParse(placeSplit[2], out var y);
-                    valid &= Enum.TryParse<PacDirection>(placeSplit[3], out var facing);
+                    if (placeSplit.Length == 4)
+                    {//Corrent number of arguments found, attempt to parse them
 
-                    if (valid) return pacSimMovement.Place(x, y, facing).ToString();
-                    else throw new ArgumentException("Invalid PLACE coordinates.");
+                        var valid = int.TryParse(placeSplit[1], out var x);
+                        valid &= int.TryParse(placeSplit[2], out var y);
+                        valid &= Enum.TryParse<PacDirection>(placeSplit[3], out var facing);
+
+                        if (valid)
+                        {
+                            return pacSimMovement.Place(x, y, facing).ToString();
+                        }
+
+                        throw new ArgumentException("Invalid PLACE coordinates.");
+                    }
+                    throw new ArgumentException($"Invalid PLACE coordinates.");
                 }
-                else throw new ArgumentException($"Invalid PLACE coordinates.");
-            }
-            else if (input == "MOVE") pacSimMovement.Move();
-            else if (input == "LEFT") pacSimMovement.Left();
-            else if (input == "RIGHT") pacSimMovement.Right();
-            else if (input == "REPORT") return pacSimMovement.Report()?.ToString();
-            else throw new ArgumentException(input);
 
-            return null;
+                case "MOVE":
+                    pacSimMovement.Move();
+                    return null;
+
+                case "LEFT":
+                    pacSimMovement.Left();
+                    return null;
+
+                case "RIGHT":
+                    pacSimMovement.Right();
+                    return null;
+
+                case "REPORT":
+                    return pacSimMovement.Report()?.ToString();
+
+                default:
+                    throw new ArgumentException(input);
+            }
         }
     }
 }
