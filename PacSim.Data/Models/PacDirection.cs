@@ -12,6 +12,10 @@ namespace PacSim.Models
 
     public static class PacDirectionExtensions
     {
+        /// <summary>
+        /// Translates the current direction into the direction (of the four defined) that is 'to the left'.
+        /// Can also be thought of as 90 degree turn counter-clockwise.
+        /// </summary>
         public static PacDirection ToTheLeft(this PacDirection currentDirection) => currentDirection switch
         {
             PacDirection.NORTH => PacDirection.WEST,
@@ -21,6 +25,10 @@ namespace PacSim.Models
             _ => throw new InvalidEnumArgumentException()
         };
 
+        /// <summary>
+        /// Translates the current direction into the direction (of the four defined) that is 'to the right'.
+        /// Can also be thought of as 90 degree turn clockwise.
+        /// </summary>
         public static PacDirection ToTheRight(this PacDirection currentDirection) => currentDirection switch
         {
             PacDirection.NORTH => PacDirection.EAST,
