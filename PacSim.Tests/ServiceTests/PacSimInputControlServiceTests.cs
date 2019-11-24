@@ -23,7 +23,11 @@ namespace PacSim.ServiceTests
             var service = new PacSimInputControlService(mockMovementService.Object);
 
             //execute valid place command
-            service.TryParseAndExecuteCommand("PLACE 0,0,NORTH");
+            var command = service.ParseCommand("PLACE 0,0,NORTH");
+
+            Assert.NotNull(command);
+
+            command.Invoke();
 
             //verify place was called in movement service
             mockMovementService.Verify(s => s.Place(0, 0, Models.PacDirection.NORTH));
@@ -38,7 +42,11 @@ namespace PacSim.ServiceTests
             var service = new PacSimInputControlService(mockMovementService.Object);
 
             //execute valid move command
-            service.TryParseAndExecuteCommand("MOVE");
+            var command = service.ParseCommand("MOVE");
+
+            Assert.NotNull(command);
+
+            command.Invoke();
 
             //verify move was called in movement service
             mockMovementService.Verify(s => s.Move());
@@ -53,7 +61,11 @@ namespace PacSim.ServiceTests
             var service = new PacSimInputControlService(mockMovementService.Object);
 
             //execute valid left command
-            service.TryParseAndExecuteCommand("LEFT");
+            var command = service.ParseCommand("LEFT");
+
+            Assert.NotNull(command);
+
+            command.Invoke();
 
             //verify left was called in movement service
             mockMovementService.Verify(s => s.Left());
@@ -68,7 +80,11 @@ namespace PacSim.ServiceTests
             var service = new PacSimInputControlService(mockMovementService.Object);
 
             //execute valid right command
-            service.TryParseAndExecuteCommand("RIGHT");
+            var command = service.ParseCommand("RIGHT");
+
+            Assert.NotNull(command);
+
+            command.Invoke();
 
             //verify right was called in movement service
             mockMovementService.Verify(s => s.Right());
@@ -83,7 +99,11 @@ namespace PacSim.ServiceTests
             var service = new PacSimInputControlService(mockMovementService.Object);
 
             //execute valid report command
-            service.TryParseAndExecuteCommand("REPORT");
+            var command = service.ParseCommand("REPORT");
+
+            Assert.NotNull(command);
+
+            command.Invoke();
 
             //verify report was called in movement service
             mockMovementService.Verify(s => s.Report());
@@ -121,7 +141,7 @@ namespace PacSim.ServiceTests
 
             foreach (var input in inputs)
             {
-                Assert.Throws<ArgumentException>(() => service.TryParseAndExecuteCommand(input));
+                Assert.Throws<ArgumentException>(() => service.ParseCommand(input));
             }
 
             mockMovementService.VerifyNoOtherCalls();
@@ -141,7 +161,7 @@ namespace PacSim.ServiceTests
             {
                 try
                 {
-                    finalResult = service.TryParseAndExecuteCommand(input);
+                    finalResult = service.ParseCommand(input)?.Invoke();
                 }
                 catch (Exception) { }//ignore invalid inputs
             }

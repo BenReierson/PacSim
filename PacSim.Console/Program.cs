@@ -34,7 +34,7 @@ namespace PacSim.ConsoleApp
                 try
                 {
                     //interpret each line read from the console
-                    var result = pacSim.TryParseAndExecuteCommand(Console.ReadLine());
+                    var result = pacSim.ParseCommand(Console.ReadLine())?.Invoke();
 
                     //display output of command if any
                     if (result != null) Console.WriteLine(result);
